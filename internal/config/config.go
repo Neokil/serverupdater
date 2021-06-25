@@ -1,3 +1,4 @@
+// Package config contains the configuration
 package config
 
 import (
@@ -11,7 +12,7 @@ type ShellCommand struct {
 }
 
 type Handler struct {
-	Uri      string         `json:"uri"`
+	URI      string         `json:"uri"`
 	Commands []ShellCommand `json:"commands"`
 }
 

@@ -27,7 +27,7 @@ func main() {
 	fmt.Printf("Loaded config: %v\n", c)
 
 	for _, h := range c.Handlers {
-		http.HandleFunc(h.Uri, (func(h config.Handler) func(w http.ResponseWriter, req *http.Request) {
+		http.HandleFunc(h.URI, (func(h config.Handler) func(w http.ResponseWriter, req *http.Request) {
 			return func(w http.ResponseWriter, r *http.Request) {
 				if r.Method == "POST" {
 					body, _ := ioutil.ReadAll(r.Body)
@@ -56,7 +56,7 @@ func main() {
 				}
 			}
 		})(h))
-		fmt.Printf("Handler registered for %s\n", h.Uri)
+		fmt.Printf("Handler registered for %s\n", h.URI)
 	}
 
 	fmt.Printf("Server started at %s:%d\n", c.Host, c.Port)
