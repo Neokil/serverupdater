@@ -19,3 +19,6 @@ vendor/
 
 # Debug files
 **/__debug_bin
+
+# Local files
+/config.json

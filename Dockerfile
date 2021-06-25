@@ -19,7 +19,9 @@ EXPOSE 80
 #
 # Create a Release-Image from Emptry-Scratch
 #
-FROM scratch as release
+FROM docker:dind as release
 COPY --from=build /go/src/build /
-ENTRYPOINT [ "/server"]
+RUN apk add docker-compose
+WORKDIR /mount
+ENTRYPOINT [ "/server", "--config=/config.json"]
 EXPOSE 80

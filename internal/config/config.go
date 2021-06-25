@@ -5,10 +5,22 @@ import (
 	"io/ioutil"
 )
 
+type ShellCommand struct {
+	Name string   `json:"name"`
+	Args []string `json:"args"`
+}
+
+type Handler struct {
+	Uri      string         `json:"uri"`
+	Commands []ShellCommand `json:"commands"`
+}
+
 type Config struct {
-	AppName string `json:"app-name"`
-	Host    string `json:"host"`
-	Port    int    `json:"port"`
+	AppName  string    `json:"app-name"`
+	Host     string    `json:"host"`
+	Port     int       `json:"port"`
+	Secret   string    `json:"secret"`
+	Handlers []Handler `json:"handlers"`
 }
 
 func FromFile(path string) (c *Config, err error) {
@@ -25,7 +37,7 @@ func FromFile(path string) (c *Config, err error) {
 }
 
 func ToFile(path string, c *Config) error {
-	b, err := json.MarshalIndent(&c, "", " ")
+	b, err := json.MarshalIndent(&c, "", "    ")
 	if err != nil {
 		return err
 	}

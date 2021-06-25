@@ -1,3 +1,3 @@
-module go-project-base
+module serverupdater
 
 go 1.16

@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"go-project-base/internal/config"
+	"serverupdater/internal/config"
 )
 
 func main() {
